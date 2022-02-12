@@ -1,0 +1,29 @@
+<form (submit)="onSumited.emit()" method="get">
+  <input
+    type="text"
+    placeholder="Nhập từ khóa..."
+    name="keyword"
+    [(ngModel)]="keyword"
+    (ngModelChange)="search()"
+  />
+  <button type="submit">
+    <fa-icon [icon]="faSearch"></fa-icon>
+  </button>
+</form>
+
+<div class="suggest-frame">
+  <button class="btn-close"></button>
+  <ul class="suggest-list">
+    <li class="suggest-item">
+      <a routerLink="#">
+        <div class="thumbnail">
+          <img src="" alt="" />
+        </div>
+        <div class="title-mv">
+          <p></p>
+          <span></span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,9 @@
+<ul class="nav-dot">
+  <ng-container *ngFor="let slide of slidesSource; let i = index">
+    <li>
+      <button [ngClass]="i === index ? 'active' : ''" (click)="setIndex(i)">
+        <span></span>
+      </button>
+    </li>
+  </ng-container>
+</ul>

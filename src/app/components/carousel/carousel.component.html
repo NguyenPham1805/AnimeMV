@@ -1,0 +1,34 @@
+<div class="carousel-container">
+  <ng-container *ngIf="!isLoading; else skeletonCarousel">
+    <ng-container *ngFor="let slide of slides; let i = index">
+      <a
+        routerLink="{{ 'info/' + slide.slug }}"
+        [ngClass]="'card-item ' + getClasNameByIndex(i)"
+      >
+        <img [src]="slide.thumbnail" [alt]="slide.name" />
+        <div class="title">
+          <h3>{{ slide.name }}</h3>
+          <p><fa-icon [icon]="faEye"></fa-icon>{{ slide.views }}</p>
+        </div>
+      </a>
+    </ng-container>
+  </ng-container>
+  <ng-template #skeletonCarousel>
+    <div class="skeleton-carousel"></div>
+  </ng-template>
+  <app-btn-nav-carousel
+    [btnIcon]="faArrowRight"
+    (handleSetIndex)="handleBtnNextClick()"
+    [className]="'next-btn'"
+  ></app-btn-nav-carousel>
+  <app-btn-nav-carousel
+    [btnIcon]="faArrowLeft"
+    (handleSetIndex)="handleBtnPrevClick()"
+    [className]="'prev-btn'"
+  ></app-btn-nav-carousel>
+  <app-nav-carousel
+    [slidesSource]="slides"
+    [index]="index"
+    (handleSetIndex)="handleSetIndex($event)"
+  ></app-nav-carousel>
+</div>

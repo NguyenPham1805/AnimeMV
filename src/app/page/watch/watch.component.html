@@ -1,0 +1,61 @@
+<div class="container">
+  <ng-container *ngIf="!isLoading; else videoLoading">
+    <app-video
+      [source]="source"
+      [title]="title"
+      [poster]="poster"
+      [info]="info"
+      [index]="index"
+    ></app-video>
+  </ng-container>
+  <ng-template #videoLoading>
+    <div class="video-skeleton"></div>
+  </ng-template>
+  <div class="film-name" *ngIf="!isLoading">
+    <h2>
+      {{ title }}
+    </h2>
+  </div>
+  <div class="info-container" *ngIf="!isLoading; else infoLoading">
+    <div class="info">
+      <div class="views">
+        Lượt xem: <span>{{ views | formatViews }}</span>
+      </div>
+      <div class="like"><fa-icon [icon]="likeIcon"></fa-icon> Chưa làm</div>
+      <div class="save"><fa-icon [icon]="saveIcon"></fa-icon> Lưu lại</div>
+      <div class="folow"><fa-icon [icon]="followIcon"></fa-icon> Theo dõi</div>
+    </div>
+  </div>
+  <ng-template #infoLoading>
+    <div class="info-skeleton">
+      <div class="title-skeleton"></div>
+      <div class="info-loading">
+        <svg viewBox="25 25 50 50">
+          <circle cx="50" cy="50" r="20"></circle>
+        </svg>
+      </div>
+    </div>
+  </ng-template>
+  <div class="list-episodes">
+    <app-title title="Danh sách tập"></app-title>
+    <div class="content-box">
+      <ng-container *ngIf="!isLoading; else chucksSkeleton">
+        <app-episodes
+          *ngFor="let episodeChunk of episodeChunks"
+          [firstEP]="episodeChunk[0].name"
+          [lastEP]="episodeChunk[episodeChunk.length - 1].name"
+          [episodeChunk]="episodeChunk"
+          [slug]="slug"
+          [activeIndex]="index"
+          (onChageEpisode)="fetchSource($event)"
+        ></app-episodes>
+      </ng-container>
+      <ng-template #chucksSkeleton>
+        <div class="chunk-skeleton"></div>
+        <div class="chunk-skeleton"></div>
+        <div class="chunk-skeleton"></div>
+      </ng-template>
+    </div>
+  </div>
+  <app-comment-list [isLoading]="isLoading"></app-comment-list>
+</div>

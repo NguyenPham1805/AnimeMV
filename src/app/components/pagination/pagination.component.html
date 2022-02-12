@@ -1,0 +1,41 @@
+<div class="pagination">
+  <ul class="pagination-list">
+    <li
+      class="btn prev"
+      *ngIf="currentPage > 1"
+      (click)="chagePage(currentPage - 1)"
+    >
+      <span><fa-icon [icon]="leftIcon"></fa-icon></span>
+    </li>
+    <li class="numb" *ngIf="currentPage > 2" (click)="chagePage(1)">
+      <span>1</span>
+    </li>
+    <li class="dots" *ngIf="currentPage > 3">
+      <span>. . .</span>
+    </li>
+    <li
+      *ngFor="let number of listPage"
+      [class]="'numb ' + (currentPage === number ? 'active' : '')"
+      (click)="chagePage(number)"
+    >
+      <span>{{ number }}</span>
+    </li>
+    <li class="dots" *ngIf="currentPage < totalPages - 2">
+      <span>. . .</span>
+    </li>
+    <li
+      class="numb"
+      *ngIf="currentPage < totalPages - 1"
+      (click)="chagePage(totalPages)"
+    >
+      <span>{{ totalPages }}</span>
+    </li>
+    <li
+      class="btn next"
+      *ngIf="currentPage < totalPages"
+      (click)="chagePage(currentPage + 1)"
+    >
+      <span><fa-icon [icon]="rightIcon"></fa-icon></span>
+    </li>
+  </ul>
+</div>

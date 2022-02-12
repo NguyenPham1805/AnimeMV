@@ -1,0 +1,65 @@
+.nav-dot {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0;
+}
+
+.nav-dot li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.nav-dot li button {
+  background: transparent;
+  width: 15px;
+  height: 15px;
+  outline: none;
+  border: 1px solid #fff;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.nav-dot li button.active {
+  transform: rotate(45deg) translate(3.5px, 3.5px);
+}
+
+.nav-dot li button.active span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  transform: translate(1.5px, -0.5px);
+}
+
+/* ---------------------------------- responsive ---------------------------------------*/
+
+@media only screen and (max-width: 700px) {
+  .nav-dot li {
+    margin: 0 3px;
+  }
+
+  .nav-dot li button {
+    width: 8px;
+    height: 8px;
+  }
+
+  .nav-dot li button.active {
+    transform: rotate(45deg) translate(1.5px, 1.5px);
+  }
+
+  .nav-dot li button.active span {
+    width: 5px;
+    height: 5px;
+    transform: translate(0.5px, -0.5px);
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .nav-dot {
+    display: none;
+  }
+}

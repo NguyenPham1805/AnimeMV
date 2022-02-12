@@ -1,0 +1,20 @@
+<div class="container">
+  <app-title
+    *ngIf="category === 'genres'; else titleBXH"
+    [title]="'Thể Loại ' + typeName"
+  ></app-title>
+  <ng-template #titleBXH>
+    <app-title [title]="'Bảng Xếp Hạng ' + typeName"></app-title>
+  </ng-template>
+  <app-list-anime
+    [listAnime]="listAnimeResponse"
+    [isListAnimeLoading]="isLoading"
+  ></app-list-anime>
+  <ng-container *ngIf="totalPage !== undefined">
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPage"
+      (onchagePage)="handleChagePage($event)"
+    ></app-pagination>
+  </ng-container>
+</div>

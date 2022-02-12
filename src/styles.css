@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@font-face {
+  font-family: "font-web";
+  src: url(./font/Asap-VariableFont_wght.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: url(./assets/img/background-body.jpg) center center;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "font-web";
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 0;
+  background: #01363d75;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  background: #0dbebe;
+}
+
+.container {
+  max-width: 82%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 150px 15px 80px 15px;
+  background: #24283366;
+}
+
+@media only screen and (max-width: 971px) {
+  .container {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .container {
+    max-width: 100%;
+    padding: 70px 7px 70px 7px;
+  }
+}

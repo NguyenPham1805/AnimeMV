@@ -1,0 +1,36 @@
+<div class="container">
+  <app-title title="Lịch sử"></app-title>
+  <div class="head-container">
+    <form (submit)="handleSubmited()">
+      <button class="search-btn">
+        <fa-icon [icon]="searchIcon"></fa-icon>
+      </button>
+      <div class="search-input">
+        <input
+          type="text"
+          name="search"
+          placeholder="Nhập từ khóa..."
+          [(ngModel)]="keyword"
+        />
+        <span class="bottom"></span>
+      </div>
+    </form>
+    <div class="clear" (click)="handleClearStorageInfo()">
+      <fa-icon [icon]="trashIcon"></fa-icon> Xóa tất cả
+    </div>
+  </div>
+  <div class="list-recent" *ngIf="listRecently.length; else notHistoryItem">
+    <ng-container *ngFor="let item of animeList || listRecently">
+      <app-history-item
+        [anime]="item"
+        (onRemoveHistoryItem)="handleRemoveHistoryItem($event)"
+      ></app-history-item>
+    </ng-container>
+  </div>
+  <ng-template #notHistoryItem>
+    <div class="not-item">
+      <h1>Bạn chưa có lịch sử xem</h1>
+      <img src="../../../assets/img/amelia-not-found.png" alt="not-found-img" />
+    </div>
+  </ng-template>
+</div>

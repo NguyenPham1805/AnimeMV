@@ -1,0 +1,122 @@
+.suggest-frame {
+  position: fixed;
+  height: 75vh;
+  z-index: 1000;
+  min-width: 75%;
+  top: 65px;
+  left: 50%;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 0;
+  transform: translateX(-49.5%);
+  background: #0c0c0cec;
+}
+
+.suggest-frame::-webkit-scrollbar {
+  width: 5px;
+}
+
+.suggest-frame::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #0dbebe;
+}
+
+.btn-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  border: none;
+  color: #f0f0f0;
+  font-size: 1.5rem;
+  background: none;
+  cursor: pointer;
+}
+
+.btn-close:active,
+.btn-close:hover {
+  color: #f30000;
+}
+
+.suggest-list {
+  margin: 0;
+  margin-top: 40px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+}
+
+.not-found {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #f0f0f0;
+}
+
+.not-found span {
+  color: #03c5bb;
+}
+
+/* ---------------------------------- dot loading ---------------------------------------*/
+
+.dot-loading {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot-loading span {
+  background: #03c5bb;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 15px;
+  transform: translate3d(0);
+  animation: dot-loading 0.6s infinite alternate;
+}
+
+.dot-loading span:nth-child(2) {
+  background: #b6fffb;
+  animation-delay: 0.2s;
+}
+
+.dot-loading span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-loading {
+  to {
+    width: 20px;
+    height: 20px;
+    transform: translate3d(0, -20px, 0);
+  }
+}
+
+/* ---------------------------------- responsive ---------------------------------------*/
+
+@media only screen and (max-width: 971px) {
+  .suggest-frame {
+    min-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .suggest-list {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
+}
+
+@media only screen and (max-width: 615px) {
+  .suggest-frame {
+    min-width: 95%;
+    top: 55px;
+  }
+
+  .suggest-list {
+    margin-top: 40px;
+  }
+}

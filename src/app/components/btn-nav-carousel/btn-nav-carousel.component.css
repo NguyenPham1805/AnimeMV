@@ -1,0 +1,22 @@
+.control-btn {
+  position: absolute;
+  background: transparent;
+  border: none;
+  outline: none;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.control-btn fa-icon {
+  color: #242424;
+  font-size: 3rem;
+}
+
+.prev-btn {
+  left: 30px;
+}
+
+.next-btn {
+  right: 30px;
+}

@@ -1,0 +1,9 @@
+.foot-last {
+  width: 100vw;
+  padding: 20px 0;
+  background-color: #000000;
+  font-family: sans-serif;
+  color: #a7a7a7dd;
+  border-top: 1px solid #5e5e5e;
+  text-align: center;
+}

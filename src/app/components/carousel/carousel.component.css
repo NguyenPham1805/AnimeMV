@@ -1,0 +1,117 @@
+.carousel-container {
+  position: relative;
+  width: 95%;
+  height: 310px;
+  margin: 50px auto;
+  overflow: hidden;
+  border: 3px solid #1d1d1d;
+  background: #1d1d1d;
+}
+
+.skeleton-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  animation: skeleton-carousel 1s linear alternate infinite;
+}
+
+@keyframes skeleton-carousel {
+  0% {
+    background: #292a2bdd;
+  }
+  100% {
+    background: #141414e5;
+  }
+}
+
+.card-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease;
+}
+
+.card-item img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-item.prev {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.card-item.active {
+  transform: translateX(0);
+}
+
+.card-item.next {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.title {
+  position: absolute;
+  padding: 20px 50px;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+  color: #fff;
+  background: linear-gradient(to top, #1d1d1d, #00000000);
+}
+
+.title h3 {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.8rem;
+}
+
+.title p {
+  margin: 0;
+  padding: 0;
+}
+
+.title fa-icon {
+  margin-right: 10px;
+}
+
+/* ---------------------------------- responsive ---------------------------------------*/
+
+@media only screen and (max-width: 971px) {
+  .carousel-container {
+    height: 250px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .carousel-container {
+    height: 200px;
+    margin: 30px auto;
+  }
+  .title h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .carousel-container {
+    height: 150px;
+  }
+
+  .title h3 {
+    font-size: 1.1rem;
+  }
+
+  .title p {
+    font-size: 0.9rem;
+  }
+}

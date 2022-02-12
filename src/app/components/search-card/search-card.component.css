@@ -1,0 +1,45 @@
+.suggest-card {
+  width: 100%;
+  list-style: none;
+}
+
+.suggest-card a {
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  padding: 10px;
+  border-bottom: 1px solid #e4e4e4;
+  overflow: hidden;
+}
+
+.suggest-card img {
+  width: 120px;
+  height: 70px;
+}
+
+.title {
+  padding: 5px 20px;
+}
+
+.title .name {
+  flex: 1;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title .views {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #dadada;
+}
+
+.title .last-ep {
+  margin-top: 5px;
+  color: #f7f7f7;
+}

@@ -1,0 +1,164 @@
+.login-modal {
+  display: none;
+  position: fixed;
+  z-index: 1003;
+  width: 520px;
+  top: 50%;
+  margin: 0 20px;
+  left: 50%;
+  transform: translate(-50%, -55%);
+}
+
+.layer-cover {
+  display: none;
+  position: fixed;
+  z-index: 1002;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #000000aa;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.modal-head img {
+  user-select: none;
+  width: 200px;
+}
+
+.modal-content {
+  padding: 10px;
+}
+
+.head-content {
+  position: relative;
+  display: block;
+  background: inherit;
+  height: 3rem;
+}
+
+.modal-title {
+  user-select: none;
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn-close {
+  position: absolute;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  top: 0;
+  right: 5px;
+}
+
+.btn-close:active,
+.btn-close:hover {
+  color: #9c1225;
+}
+
+.login-modal form {
+  padding: 5px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-modal form label {
+  user-select: none;
+  font-size: 1.1rem;
+  margin: 15px 0 5px 0;
+}
+
+.login-modal form input {
+  outline: none;
+  padding: 7px 0 7px 10px;
+  border-radius: 3px;
+  border: 1px solid #5e5e5e;
+}
+
+.login-modal form .btn-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.login-modal form .btn-submit button {
+  background: #333333;
+  border-radius: 3px;
+  border: 1px solid #000000;
+  color: #dadada;
+  padding: 7px 25px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.login-modal form .btn-submit button:active,
+.login-modal form .btn-submit button:hover {
+  background: #333333dd;
+  color: #dadadadd;
+}
+
+.login-modal .register-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 30px;
+}
+
+.login-modal .register-bar a {
+  color: #333333;
+  text-decoration: none;
+}
+
+.login-modal .register-bar a:hover,
+.login-modal .register-bar a:active {
+  color: #333333aa;
+}
+
+.login-modal .socal-login {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-modal .socal-login h6 {
+  color: #8b8b8b;
+  user-select: none;
+  font-size: 0.9rem;
+}
+
+.login-modal .socal-login .socal-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.login-modal .socal-login .socal-icon a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  margin: 0 10px;
+}
+
+.login-modal .socal-login .socal-icon img {
+  margin-left: 20px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.login-modal .socal-login .socal-icon img:active {
+  transform: scale(0.9);
+}
+.login-modal .socal-login .socal-icon img:hover {
+  transform: scale(1.2);
+}

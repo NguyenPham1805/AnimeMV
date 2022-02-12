@@ -1,0 +1,12 @@
+<ng-container *ngIf="!isListAnimeLoading; else ListAnimeSkeleton">
+  <div class="grid">
+    <ng-container *ngFor="let anime of listAnime">
+      <app-anime-card [anime]="anime"></app-anime-card>
+    </ng-container>
+  </div>
+</ng-container>
+<ng-template #ListAnimeSkeleton>
+  <div class="grid">
+    <div class="skeleton-card" *ngFor="let skeletonCard of skeletonGrid"></div>
+  </div>
+</ng-template>

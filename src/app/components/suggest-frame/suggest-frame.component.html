@@ -1,0 +1,24 @@
+<div class="suggest-frame" *ngIf="isVisibleSuggestFrame">
+  <button class="btn-close" (click)="close()">
+    <fa-icon [icon]="CloseIcon"></fa-icon>
+  </button>
+  <ul class="suggest-list" *ngIf="searchResponse.length > 1">
+    <ng-container *ngFor="let item of searchResponse">
+      <app-search-card
+        [itemCard]="item"
+        (onSearchCardClick)="onSearchCardClick.emit()"
+      ></app-search-card>
+    </ng-container>
+  </ul>
+  <div class="dot-loading" *ngIf="isSearchLoading">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="not-found" *ngIf="isNotFound">
+    <h2>
+      Không tìm thấy kết quả liên quan đến &ensp;
+      <span> {{ searchKeyword }} </span>!
+    </h2>
+  </div>
+</div>

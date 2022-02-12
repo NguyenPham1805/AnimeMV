@@ -1,0 +1,12 @@
+<li class="suggest-card" (click)="onSearchCardClick.emit()">
+  <a routerLink="{{ 'info/' + itemCard.slug }}">
+    <div>
+      <img [src]="itemCard.thumbnail" [alt]="itemCard.name" />
+    </div>
+    <div class="title">
+      <div class="name">{{ itemCard.name }}</div>
+      <div class="views">{{ itemCard.views | formatViews }} lượt xem</div>
+      <div class="last-ep">{{ itemCard.time }}</div>
+    </div>
+  </a>
+</li>

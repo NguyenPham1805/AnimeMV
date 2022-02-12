@@ -1,0 +1,169 @@
+<div
+  class="video-wrapper"
+  #videoContainer
+  (click)="handleEnable()"
+  (mousemove)="handleEnable()"
+  (mouseleave)="handleDisable()"
+>
+  <div [class]="'video-title ' + (isHoverEnable ? 'enabled' : '')">
+    <h1>
+      {{ title }}
+    </h1>
+  </div>
+  <div class="video-container">
+    <video
+      #mainVideo
+      class="player video-js vjs-default-skin"
+      [poster]="poster"
+      (click)="player ? handleTogglePlay() : createPlayer()"
+      (dblclick)="player && handleToggleFullScreen()"
+    ></video>
+    <div
+      [class]="'play-btn ' + (isHoverEnable ? 'enabled' : '')"
+      (click)="player ? handleTogglePlay() : createPlayer()"
+    >
+      <i class="material-icons">{{
+        isPause && (isEnded ? "replay" : "play_arrow")
+      }}</i>
+    </div>
+    <div
+      [class]="'controls-bar ' + (isHoverEnable ? 'enabled' : '')"
+      *ngIf="player"
+    >
+      <div
+        class="seek-container"
+        #seekRef
+        (mousedown)="handleSeeking($event)"
+        (mouseleave)="handleMouseLeave()"
+        (mouseup)="isSeeking = false"
+        (mousemove)="isSeeking && handleSeeking($event); handleHover($event)"
+      >
+        <div class="seek-bar">
+          <div
+            class="current-width"
+            [ngStyle]="{
+              width:
+                (player.duration() !== 0
+                  ? (player.currentTime() / player.duration()) * 100
+                  : 0) + '%'
+            }"
+          >
+            <span #timeTooltips class="tooltips">{{
+              currentTimeHover | time
+            }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="control-list">
+        <div class="controls-left">
+          <button class="backward" (click)="handleSeekTime(-10)">
+            <i class="material-icons">replay_10</i>
+          </button>
+          <button class="play" (click)="handleTogglePlay()">
+            <i class="material-icons">{{ isPause ? "play_arrow" : "pause" }}</i>
+          </button>
+          <button class="forward" (click)="handleSeekTime(10)">
+            <i class="material-icons">forward_10</i>
+          </button>
+          <div class="volume-container">
+            <button
+              class="volume-btn"
+              (click)="
+                player.volume()
+                  ? handleVolumeChange(0)
+                  : handleVolumeChange(100)
+              "
+            >
+              <i class="material-icons" *ngIf="volume >= 50">volume_up</i>
+              <i class="material-icons" *ngIf="volume < 50 && volume > 0"
+                >volume_down</i
+              >
+              <i class="material-icons" *ngIf="volume === 0">volume_off</i>
+            </button>
+            <div class="volume-range">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                [(ngModel)]="volume"
+                (change)="handleVolumeChange(volume)"
+              />
+            </div>
+          </div>
+          <div class="timer">
+            <span class="current">{{ player.currentTime() | time }}</span> /
+            <span class="duration">{{ player.duration() | time }}</span>
+          </div>
+        </div>
+        <div class="controls-right">
+          <button
+            class="setting"
+            (click)="player.duration() && toggleSetting()"
+          >
+            <i class="material-icons">settings</i>
+          </button>
+          <button class="fullscreen" (click)="handleToggleFullScreen()">
+            <fa-icon
+              [icon]="isFullscreen ? exitFullscreenIcon : fullscreenIcon"
+            ></fa-icon>
+          </button>
+          <div class="setting-tab animation" *ngIf="isSettingActive">
+            <ul>
+              <li
+                (click)="
+                  isSpeedActive = !isSpeedActive; isSettingActive = false
+                "
+              >
+                <h3>Tốc độ phát</h3>
+                <span
+                  >{{ player.playbackRate() }}x
+                  <fa-icon [icon]="RightArrowIcon"></fa-icon
+                ></span>
+              </li>
+              <li
+                *ngIf="levels"
+                (click)="
+                  isQualityActive = !isQualityActive; isSettingActive = false
+                "
+              >
+                <h3>Chất lượng</h3>
+                <span
+                  >{{ currentQuality }}p
+                  <fa-icon [icon]="RightArrowIcon"></fa-icon
+                ></span>
+              </li>
+            </ul>
+          </div>
+          <div class="speed-tab animation" *ngIf="isSpeedActive">
+            <h3 (click)="isSpeedActive = false; isSettingActive = true">
+              <fa-icon [icon]="leftArrowIcon"></fa-icon> Tốc độ phát
+            </h3>
+            <ul>
+              <li
+                *ngFor="let x of [].constructor(8); let i = index"
+                [class]="player.playbackRate() === (i + 1) / 4 ? 'active' : ''"
+                (click)="handleChageSpeed(i)"
+              >
+                {{ (i + 1) / 4 }}x
+              </li>
+            </ul>
+          </div>
+          <div class="quality-tab animation" *ngIf="isQualityActive">
+            <h3 (click)="isQualityActive = false; isSettingActive = true">
+              <fa-icon [icon]="leftArrowIcon"></fa-icon> chất lượng
+            </h3>
+            <ul>
+              <li
+                *ngFor="let qualityValue of levels; let i = index"
+                [class]="quality.selectedIndex_ === i ? 'active' : ''"
+                (click)="changeQuality(i)"
+              >
+                {{ qualityValue }}p
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

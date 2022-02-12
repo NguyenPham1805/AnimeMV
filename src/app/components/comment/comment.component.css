@@ -1,0 +1,79 @@
+.comment {
+  padding: 5px 10px;
+  padding-bottom: 0;
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #5e5e5e;
+}
+
+.comment .avatar {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.comment .avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.comment-body {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.comment-body .content {
+  font-size: 1.1rem;
+  padding: 5px 0;
+}
+
+.option {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.like.active i,
+.dislike.active i {
+  color: #2474dd;
+}
+
+.option button {
+  border: none;
+  background: none;
+  outline: none;
+  color: #242424;
+  margin: 0px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.option button i {
+  font-size: 1.2rem;
+}
+
+.option .reply {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 450px) {
+  .comment .avatar img {
+    width: 42px;
+    height: 42px;
+    border-radius: 42px;
+  }
+
+  .comment {
+    padding: 0;
+    padding-top: 5px;
+  }
+
+  .comment-body {
+    padding: 0;
+  }
+
+  .content {
+    padding-top: 0;
+  }
+}

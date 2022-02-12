@@ -1,0 +1,106 @@
+<div class="container">
+  <ng-container *ngIf="searchKeyword.length; else searched">
+    <ng-container *ngIf="!isLoading; else searchLoading">
+      <ng-container *ngIf="searchResult.length; else notFound">
+        <div class="search-box-title">
+          <h2>
+            Kết quả tìm kiếm: <span class="keyword">{{ searchKeyword }}</span>
+          </h2>
+          <form (submit)="handleSubmited()" method="get">
+            <button type="submit">
+              <fa-icon [icon]="searchIcon"></fa-icon>
+            </button>
+            <div class="search-input">
+              <input
+                type="text"
+                placeholder="Nhập từ khóa..."
+                name="keyword"
+                [(ngModel)]="keyword"
+              />
+              <span class="bottom"></span>
+              <span class="right"></span>
+              <span class="top"></span>
+              <span class="left"></span>
+            </div>
+          </form>
+        </div>
+        <app-list-anime
+          [listAnime]="searchResult"
+          [isListAnimeLoading]="false"
+        ></app-list-anime>
+      </ng-container>
+      <ng-template #notFound>
+        <div class="wrapper-container">
+          <form (submit)="handleSubmited()" method="get">
+            <button type="submit">
+              <fa-icon [icon]="searchIcon"></fa-icon>
+            </button>
+            <div class="search-input">
+              <input
+                type="text"
+                placeholder="Nhập từ khóa..."
+                name="keyword"
+                [(ngModel)]="keyword"
+              />
+              <span class="bottom"></span>
+              <span class="right"></span>
+              <span class="top"></span>
+              <span class="left"></span>
+            </div>
+          </form>
+          <img
+            src="../../../assets/img/amelia-not-found.png"
+            alt="amelia-notfound"
+          />
+          <h2>
+            Không tìm thấy kết quả liên quan đến:
+            <span class="keyword">{{ searchKeyword }}</span>
+          </h2>
+        </div>
+      </ng-template>
+    </ng-container>
+    <ng-template #searchLoading>
+      <div class="wrapper-container">
+        <div class="balls">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <img
+          src="../../../assets/img/amelia-searching.gif"
+          alt="amelia-searching"
+        />
+        <h2>
+          Đang tìm: <span class="keyword">{{ searchKeyword }}</span>
+        </h2>
+      </div>
+    </ng-template>
+  </ng-container>
+  <ng-template #searched>
+    <div class="wrapper-container">
+      <form (submit)="handleSubmited()" method="get">
+        <button type="submit">
+          <fa-icon [icon]="searchIcon"></fa-icon>
+        </button>
+        <div class="search-input">
+          <input
+            type="text"
+            placeholder="Nhập từ khóa..."
+            name="keyword"
+            [(ngModel)]="keyword"
+          />
+          <span class="bottom"></span>
+          <span class="right"></span>
+          <span class="top"></span>
+          <span class="left"></span>
+        </div>
+      </form>
+      <h2 class="search-title">Bạn tìm gì?</h2>
+      <img
+        class="search-img"
+        src="../../../assets/img/amelia-search.png"
+        alt="amelia-search"
+      />
+    </div>
+  </ng-template>
+</div>

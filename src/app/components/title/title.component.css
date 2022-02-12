@@ -1,0 +1,44 @@
+.title {
+  position: relative;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  background: #ffffffbd;
+  margin: 0;
+}
+
+.title h3 {
+  position: relative;
+  display: inline-block;
+  padding: 7px 25px 7px 15px;
+  background: #1b1b1b;
+  font-family: "Gill Sans", "Trebuchet MS", sans-serif;
+  color: #fff;
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+}
+
+.title .arrow {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  top: 0;
+  right: 0;
+  background: #1b1b1b;
+  transform: rotate(45deg) translate(14px, -6px);
+}
+
+@media only screen and (max-width: 620px) {
+  .title h3 {
+    padding: 5px 20px 5px 12px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .title .arrow {
+    width: 23px;
+    height: 23px;
+    transform: rotate(45deg) translate(11.5px, -5px);
+  }
+}

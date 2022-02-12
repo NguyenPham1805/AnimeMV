@@ -1,0 +1,153 @@
+<div class="container">
+  <ng-container *ngIf="!isLoading; else bannerLoading">
+    <div class="banner">
+      <h1 class="title">
+        {{ title }}
+      </h1>
+      <div class="large-banner">
+        <div
+          class="banner-image"
+          [ngStyle]="{
+            background: 'url(' + bannerImage + ')'
+          }"
+        ></div>
+      </div>
+      <div
+        class="small-banner"
+        [ngStyle]="{
+          background: 'url(' + bannerImage + ')'
+        }"
+      >
+        <a
+          [routerLink]="['/watch', slug]"
+          [queryParams]="{ episode_index: 1 }"
+          class="play-now"
+        >
+          <span>Xem Ngay</span>
+          <fa-icon [icon]="playIcon"></fa-icon>
+        </a>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #bannerLoading>
+    <div class="banner-skeleton">
+      <div class="title-skeleton"></div>
+      <div class="title2-skeleton"></div>
+      <div class="small-banner-skeleton"></div>
+    </div>
+  </ng-template>
+
+  <div class="info-header">
+    <app-title title="Thông tin Anime"></app-title>
+    <div class="option">
+      <button class="dropdown-btn" (click)="handleOptionDropdown()">
+        <fa-icon [icon]="optionIcon"></fa-icon>
+      </button>
+      <ul class="option-list" *ngIf="isOptionDropdown">
+        <li>
+          Lưu lại
+          <fa-icon [icon]="saveIcon"></fa-icon>
+        </li>
+        <li>
+          Báo lỗi
+          <fa-icon [icon]="reportIcon"></fa-icon>
+        </li>
+        <li>
+          Hỗ trợ
+          <fa-icon [icon]="suportIcon"></fa-icon>
+        </li>
+      </ul>
+    </div>
+    <div class="info">
+      <div class="count-box" *ngIf="!isLoading; else countBoxLoading">
+        <div class="views flex">
+          <fa-icon [icon]="viewIcon"></fa-icon>{{ views | formatViews }} lượt
+          xem
+        </div>
+        <div class="like flex">
+          <fa-icon [icon]="likeIcon"></fa-icon>Chưa làm
+        </div>
+        <div class="folow flex">
+          <fa-icon [icon]="followIcon"></fa-icon>Chưa làm
+        </div>
+        <div class="rate flex">
+          <fa-icon [icon]="rateIcon"></fa-icon>Chưa làm
+        </div>
+        <div class="count-ep flex">
+          <fa-icon [icon]="epIcon"></fa-icon>{{ countEp }} Tập
+        </div>
+      </div>
+      <ng-template #countBoxLoading>
+        <div class="count-box-loading">
+          <svg viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20"></circle>
+          </svg>
+        </div>
+      </ng-template>
+    </div>
+    <div class="sub-teams">
+      <h2>Nhóm sub:</h2>
+      <ng-container *ngIf="!isLoading; else subtemSkeleton">
+        <span *ngFor="let subteam of subteams">{{ subteam }}</span>
+      </ng-container>
+      <ng-template #subtemSkeleton>
+        <div class="button-skeleton"></div>
+        <div class="button-skeleton"></div>
+        <div class="button-skeleton"></div>
+      </ng-template>
+    </div>
+    <div class="genres">
+      <h2>Thể loại:</h2>
+      <ng-container *ngIf="!isLoading; else genreSkeleton">
+        <a
+          class="tag"
+          *ngFor="let genre of genres"
+          [routerLink]="['/genres', genre.slug]"
+        >
+          {{ genre.name }}
+        </a>
+      </ng-container>
+      <ng-template #genreSkeleton>
+        <div class="button-skeleton"></div>
+        <div class="button-skeleton"></div>
+        <div class="button-skeleton"></div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="main-info">
+    <div class="content column">
+      <app-title title="Nội dung"></app-title>
+      <div class="content-box">
+        <p class="description" *ngIf="!isLoading; else descriptSkeleton">
+          {{ description }}
+        </p>
+        <ng-template #descriptSkeleton>
+          <div class="description-skeleton"></div>
+          <div class="description-skeleton"></div>
+          <div class="description-skeleton"></div>
+          <div class="description-skeleton"></div>
+          <div class="description-skeleton"></div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="list-episodes column">
+      <app-title title="Danh sách tập"></app-title>
+      <div class="content-box">
+        <ng-container *ngIf="!isLoading; else chucksSkeleton">
+          <app-episodes
+            *ngFor="let episodeChunk of episodeChunks"
+            [firstEP]="episodeChunk[0].name"
+            [lastEP]="episodeChunk[episodeChunk.length - 1].name"
+            [episodeChunk]="episodeChunk"
+            [slug]="slug"
+          ></app-episodes>
+        </ng-container>
+        <ng-template #chucksSkeleton>
+          <div class="chunk-skeleton"></div>
+          <div class="chunk-skeleton"></div>
+          <div class="chunk-skeleton"></div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

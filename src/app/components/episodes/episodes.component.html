@@ -1,0 +1,23 @@
+<div class="dropdown-btn" (click)="handleToggleDropdown()">
+  <h3>Tập {{ firstEP }} - Tập {{ lastEP }}</h3>
+  <fa-icon [icon]="rightArrow" [class.rotate]="isDropdown"></fa-icon>
+</div>
+<div class="dropdown-list" *ngIf="isDropdown">
+  <ul class="episodes">
+    <li *ngFor="let episode of episodeChunk">
+      <a (click)="handleNavigateWatch(slug, episode.name)" class="episode-link">
+        <div class="index">{{ episode.name }}</div>
+        <div class="img">
+          <img [src]="episode.thumbnail_medium" [alt]="episode.film_name" />
+        </div>
+        <div class="title">
+          <h4>{{ episode.full_name }}</h4>
+          <span>{{ episode.views | formatViews }} lượt xem</span>
+          <span class="episode-active" *ngIf="activeIndex === episode.name"
+            >Đang xem</span
+          >
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

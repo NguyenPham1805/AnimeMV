@@ -1,0 +1,52 @@
+.grid {
+  display: grid;
+  margin-top: 20px;
+  padding: 20px;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.skeleton-card {
+  margin: 0 auto;
+  color: #fff;
+  width: 250px;
+  height: 200px;
+  border: #141414 3px solid;
+  animation: skeleton-carousel 1s linear alternate infinite;
+}
+
+@keyframes skeleton-carousel {
+  0% {
+    background: #49525c;
+  }
+  100% {
+    background: #141414;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .grid {
+    padding: 15px;
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .skeleton-card {
+    width: 180px;
+    height: 130px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .grid {
+    padding: 7px;
+    column-gap: 0.5rem;
+    row-gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  }
+
+  .skeleton-card {
+    width: 150px;
+    height: 100px;
+  }
+}

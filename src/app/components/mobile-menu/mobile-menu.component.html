@@ -1,0 +1,64 @@
+<div class="menu-mobile" [class.open]="isOpen">
+  <app-search-input
+    [keyword]="searchKeyword"
+    (onKeyWordChage)="handleChageKeyword($event)"
+    (onSumited)="handleSubmited()"
+  ></app-search-input>
+  <app-suggest-frame
+    [searchResponse]="searchResponse"
+    [searchKeyword]="searchKeyword"
+    [isSearchLoading]="isSearchLoading"
+    [isVisibleSuggestFrame]="isVisibleSuggestFrame && isOpen"
+    [isNotFound]="isNotFound"
+    (onCloseSuggestFrame)="handleCloseSugetFrame()"
+    (onSearchCardClick)="handleCloseSugetFrame()"
+  ></app-suggest-frame>
+
+  <div class="list-btn">
+    <button class="close-btn" (click)="closeMenu()">
+      <fa-icon [icon]="CloseIcon"></fa-icon>
+    </button>
+    <app-nav-select [listSelectIcon]="listSelectIcon"></app-nav-select>
+  </div>
+
+  <ul class="list-item">
+    <li class="item-link" *ngFor="let route of navRoutes">
+      <ng-container *ngIf="!route.isDropdown; else dropdown">
+        <a
+          class="link"
+          routerLink="{{ route.path }}"
+          routerLinkActive="selected"
+          (click)="onClose.emit()"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          {{ route.name }}
+        </a>
+      </ng-container>
+      <ng-template #dropdown>
+        <a class="dropdown-title link" (click)="HandleOpenDropdown(route)">
+          <p>{{ route.name }}</p>
+          <fa-icon
+            [icon]="CaretDownIcon"
+            [class.rotate]="route.isOpen"
+          ></fa-icon>
+        </a>
+        <ul
+          class="dropdown-item"
+          *ngIf="route.isDropdown"
+          [class.display]="route.isOpen"
+        >
+          <li *ngFor="let item of route.dropdownData">
+            <a
+              (click)="onClose.emit()"
+              routerLink="{{ route?.dropdownPath(item) }}"
+              routerLinkActive="selected"
+            >
+              {{ route?.listKey(item) }}
+            </a>
+          </li>
+        </ul>
+      </ng-template>
+    </li>
+  </ul>
+</div>
+<div *ngIf="isOpen" class="overlay" (click)="closeMenu()"></div>

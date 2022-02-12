@@ -1,0 +1,75 @@
+<div class="header-desktop" [class.scrolltop]="isHideNavbar">
+  <div class="navbar-control">
+    <div class="navbar-logo">
+      <a routerLink="/">
+        <img src="./assets/img/animeMV-logo.png" alt="animeMV-logo.png" />
+      </a>
+    </div>
+
+    <div class="navbar-search">
+      <app-search-input
+        [keyword]="searchKeyword"
+        (onKeyWordChage)="handleChageKeyword($event)"
+        (onSumited)="handleSubmited()"
+      ></app-search-input>
+    </div>
+
+    <app-suggest-frame
+      [searchResponse]="searchResponse"
+      [searchKeyword]="searchKeyword"
+      [isSearchLoading]="isSearchLoading"
+      [isVisibleSuggestFrame]="isVisibleSuggestFrame"
+      [isNotFound]="isNotFound"
+      (onCloseSuggestFrame)="handleCloseSugetFrame()"
+      (onSearchCardClick)="handleCloseSugetFrame()"
+    ></app-suggest-frame>
+
+    <div class="navbar-select">
+      <app-nav-select [listSelectIcon]="listSelectIcon"></app-nav-select>
+    </div>
+
+    <button class="menu-btn" (click)="handleOpenMenuMobile()">
+      <fa-icon [icon]="BarsIcon"></fa-icon>
+    </button>
+  </div>
+
+  <div class="navbar-menu">
+    <ul class="list-item">
+      <li class="item-link" *ngFor="let route of navRoutes">
+        <ng-container *ngIf="!route.isDropdown; else dropdown">
+          <a
+            routerLink="{{ route.path }}"
+            routerLinkActive="selected"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ route.name }}
+          </a>
+        </ng-container>
+        <ng-template #dropdown>
+          <a>
+            {{ route.name }}
+            <fa-icon [icon]="CaretDownIcon"></fa-icon>
+          </a>
+          <ul class="dropdown-item" *ngIf="route.isDropdown">
+            <li *ngFor="let item of route.dropdownData">
+              <a
+                routerLink="{{ route?.dropdownPath(item) }}"
+                routerLinkActive="selected"
+              >
+                {{ route?.listKey(item) }}
+              </a>
+            </li>
+          </ul>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<app-mobile-menu
+  [isOpen]="isMobileMenuOpen"
+  [navRoutes]="navRoutes"
+  [listSelectIcon]="listSelectIcon"
+  (onClose)="handleOpenMenuMobile()"
+  (onCloseDropdown)="handleCloseDropdown($event)"
+></app-mobile-menu>

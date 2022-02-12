@@ -1,0 +1,35 @@
+<div class="comment-container">
+  <app-title title="Bình luận"></app-title>
+  <div class="head-box" *ngIf="!isLoading; else headboxLoading">
+    <div class="count-box">
+      <span class="material-icons"> chat </span> Bình luận(123)
+    </div>
+    <div class="sort">
+      <select class="sort">
+        <option value="1" selected>Mới nhất</option>
+        <option value="2">Cũ nhất</option>
+      </select>
+      <fa-icon [icon]="rightIcon"></fa-icon>
+    </div>
+  </div>
+  <ng-template #headboxLoading>
+    <div class="headbox-skeleton"></div>
+  </ng-template>
+  <div class="comment-list" *ngIf="!isLoading; else commentListLoading">
+    <app-comment-form placeholder="Bình luận..."></app-comment-form>
+    <app-comment></app-comment>
+    <app-comment></app-comment>
+    <app-comment></app-comment>
+    <app-comment></app-comment>
+    <app-comment></app-comment>
+    <app-comment></app-comment>
+    <div class="load-btn"><button>Tải thêm</button></div>
+  </div>
+  <ng-template #commentListLoading>
+    <div class="comment-list-loading">
+      <svg viewBox="25 25 50 50">
+        <circle cx="50" cy="50" r="20"></circle>
+      </svg>
+    </div>
+  </ng-template>
+</div>

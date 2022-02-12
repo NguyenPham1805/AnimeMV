@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500&family=Montserrat:wght@100&family=Nanum+Gothic&display=swap");
+
+.not-found-page {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  position: fixed;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background: url(../../../assets/img/p404.png), #00011f;
+  color: #fff;
+}
+
+.not-found-page h1,
+.not-found-page h3 {
+  text-align: center;
+}
+
+.num-code {
+  font-family: "Montserrat";
+  font-size: 7rem;
+  font-weight: 200;
+}
+
+.not-found-page .img {
+  display: flex;
+  justify-content: center;
+}
+
+.not-found-page img {
+  width: 200px;
+}
+
+.return {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin: 15px 0; */
+}
+
+.return a {
+  text-align: center;
+  text-decoration: none;
+  background: #570202;
+  color: #5f64f0;
+  padding: 10px 20px;
+  margin: 15px;
+}
+
+.return a:last-child {
+  background: #111233;
+  color: #b94f4f;
+}
+
+.return a:hover {
+  filter: brightness(1.5);
+}

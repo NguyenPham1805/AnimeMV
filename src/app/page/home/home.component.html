@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="banner">
+    <app-title [title]="'Anime đề cử'"></app-title>
+    <app-carousel [isLoading]="isSlideLoading" [slides]="slides"></app-carousel>
+    <app-title [title]="'Anime Mới cập nhật'"></app-title>
+    <app-list-anime
+      [listAnime]="listAnime"
+      [isListAnimeLoading]="isListAnimeLoading"
+    ></app-list-anime>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="anime-item">
+  <a [routerLink]="['/info', anime.slug]">
+    <div class="anime-head">
+      <div class="ep-latest">
+        <p>{{ anime.time || anime.latestEpisode?.name }}</p>
+        <span>{{ anime.time || anime.latestEpisode?.name }}</span>
+      </div>
+    </div>
+
+    <div class="anime-body">
+      <img [src]="anime.thumbnail" [alt]="anime.latestEpisode?.name" />
+      <span class="views"
+        >{{ anime.views || anime.latestEpisode?.views | formatViews }} lượt
+        xem</span
+      >
+    </div>
+
+    <div class="anime-foot">
+      <p>{{ anime.name }}</p>
+    </div>
+  </a>
+</div>
