@@ -13,7 +13,7 @@
         <div class="title">
           <h4>{{ episode.full_name }}</h4>
           <span>{{ episode.views | formatViews }} lượt xem</span>
-          <span class="episode-active" *ngIf="activeIndex === episode.name"
+          <span class="episode-active" *ngIf="activeIndex === episode.name - 1"
             >Đang xem</span
           >
         </div>

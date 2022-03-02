@@ -116,7 +116,7 @@
   .anime-item {
     max-width: 180px;
     border: #000000 1px solid;
-    border-radius: 3px;
+    border-radius: 0;
   }
 
   .anime-head .ep-latest {

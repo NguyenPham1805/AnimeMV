@@ -47,6 +47,8 @@ export class HistoryComponent implements OnInit {
   }
 
   updateListRecent() {
-    this.listRecently = Storage.find<StorageInfo>("AnimeMV-recent");
+    this.listRecently = Storage.find<StorageInfo>("AnimeMV-recent").sort(
+      (a, b) => b.date - a.date
+    );
   }
 }

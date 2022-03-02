@@ -52,3 +52,9 @@ body {
     padding: 70px 7px 70px 7px;
   }
 }
+
+@media only screen and (max-width: 620px) {
+  body {
+    background: #070c0f;
+  }
+}

@@ -152,6 +152,7 @@ export class VideoComponent implements OnInit, OnDestroy {
       ],
     });
 
+    console.log(this.source)
     this.isPause = false;
     this.player.play();
     this.storagePlayer = this.Storage.findOne("AnimeMV-player");
