@@ -412,7 +412,8 @@
   }
 
   .controls-bar {
-    height: 45px;
+    /* height: 45px; */
+    display: none;
   }
 
   .setting-tab,

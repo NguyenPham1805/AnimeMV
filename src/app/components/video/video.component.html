@@ -56,13 +56,17 @@
       </div>
       <div class="control-list">
         <div class="controls-left">
-          <button class="backward" (click)="handleSeekTime(-10)">
+          <button class="backward" (click)="handleSeekTime(-10)" title="-10s">
             <i class="material-icons">replay_10</i>
           </button>
-          <button class="play" (click)="handleTogglePlay()">
+          <button
+            class="play"
+            (click)="handleTogglePlay()"
+            [title]="isPause ? 'phát' : 'dừng'"
+          >
             <i class="material-icons">{{ isPause ? "play_arrow" : "pause" }}</i>
           </button>
-          <button class="forward" (click)="handleSeekTime(10)">
+          <button class="forward" (click)="handleSeekTime(10)" title="10s">
             <i class="material-icons">forward_10</i>
           </button>
           <div class="volume-container">
