@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Observable, of, switchMap, tap } from "rxjs";
+import { of, switchMap, tap } from "rxjs";
 import { AppService } from "src/app/app.service";
 import { Anime } from "src/types";
 

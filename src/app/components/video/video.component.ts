@@ -147,12 +147,10 @@ export class VideoComponent implements OnInit, OnDestroy {
       sources: [
         {
           src: this.source,
-          type: "application/x-mpegURL",
         },
       ],
     });
 
-    console.log(this.source)
     this.isPause = false;
     this.player.play();
     this.storagePlayer = this.Storage.findOne("AnimeMV-player");

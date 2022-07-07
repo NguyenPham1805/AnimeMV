@@ -1,6 +1,7 @@
 <form (submit)="onSumited.emit()" method="get">
   <input
     type="text"
+    autocomplete="off"
     placeholder="Nhập từ khóa..."
     name="keyword"
     [(ngModel)]="keyword"
